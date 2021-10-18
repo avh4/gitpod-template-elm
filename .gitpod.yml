@@ -1,0 +1,17 @@
+ports:
+  - port: 8000
+    onOpen: notify
+
+tasks:
+  - name: elm reactor
+    init: |
+      npm install
+      gp sync-done npminstall
+    command: npm run-script start
+  - init: |
+      gp sync-await npminstall
+    command: echo
+
+vscode:
+  extensions:
+    - "elmtooling.elm-ls-vscode"
